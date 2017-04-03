@@ -1,0 +1,64 @@
+ 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="vt.css"/>
+    </h:head>
+    <h:body>
+        <h:form>
+            <table width="100%" border="0">
+                <tr>
+                    <td>
+                        <h1 align="center">
+                            <h:graphicImage library="images" name="vtlogo.jpg"
+                                            alt="Virtual Trainer Logo"/>
+                            <h:outputText value="#{res.title}"/>
+                        </h1>
+                    </td>
+                </tr>          
+                <tr>
+                    <td> 
+                        <table width="100%" class="BarBkgnd"><tr><td align="right">                                
+                                    <h:commandLink action="register" immediate="true">
+                                        <h:outputText value="register"/>
+                                    </h:commandLink> |                                    
+                                    <h:commandLink action="login.xhtml" immediate="true">
+                                        <h:outputText value="Login"/>
+                                    </h:commandLink>
+
+                                </td></tr>
+                        </table>
+                        <!--                        <f:subview id="loginbar">
+                                                    <ui:include src="loginbar.jsp"/>
+                                                </f:subview>-->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p><h:outputText value="#{res['login.header']}" styleClass="PageTitle"/></p>
+                        <h:messages globalOnly="true" infoClass="LoginError"/>              
+                        <h:panelGrid width="70%" columns="3" border="0" styleClass="form-bkg">
+                            <h:outputLabel value="#{res['login.userid']}" for="userid"/>                
+                            <h:inputText required="true" id="userid" requiredMessage="Enter userid"
+                                         value="#{loginBean.user.userId}"/>
+                            <h:message for="userid" errorClass="ValidateError"/>
+                            <h:outputLabel value="#{res['login.password']}" for="password"/>                
+                            <h:inputSecret required="true" id="password" requiredMessage="Enter password"
+                                           value="#{loginBean.user.userPassword}"/>
+                            <h:message for="password" errorClass="ValidateError"/>
+                            <f:verbatim></f:verbatim>
+                            <h:panelGroup>
+                                <h:commandButton value="#{res['login.login']}"
+                                                 action="#{loginBean.login()}"/> |                                                                   
+                                <h:commandButton value="#{res['login.cancel']}" immediate="true"
+                                                 action="index?faces-redirect=true"/>
+                            </h:panelGroup>                            
+                        </h:panelGrid>
+                    </td>
+                </tr>
+            </table>
+        </h:form>
+    </h:body>
+</html>

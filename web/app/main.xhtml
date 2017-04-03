@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <!--      xmlns:t="http://virtualsportstrainer.com/trainercomponents" >-->
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></meta>
+        <title>
+            <h:outputText value="#{res.title} - #{res['main.pageTitle']}"/>            
+        </title>
+
+        <h:outputStylesheet library="css" name="vt.css" />
+        <!--<h:outputStylesheet library="css" name="bootstrap.css"/>-->
+        <!--<h:outputStylesheet library="css" name="bootstrap.min.css"/>-->
+        <link rel="shortcut icon" href="../images/favicon.ico"/>
+    </h:head>
+    <body><h:form>
+            <table width="100%" border="0" >
+                <tr>
+                    <td>
+                        <h1 align="center">
+                            <h:graphicImage library="images" name="vtlogo.jpg"
+                                            alt="Virtual Trainer Logo"/>
+                            <h:outputText value="#{res.title}"/>
+                        </h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h:messages infoClass="LoginSuccess" />
+                        <table width="100%" class="BarBkgnd"><tr><td align="left">                                  
+                                    <h:outputLabel value="#{res['mainbar.welcome']} " styleClass="GUITag" />
+                                    <h:outputText id="userid"  value="#{loginBean.user.userId}" />                                    
+                                </td><td align="left">                                    
+                                    <h:outputLabel value="#{res['mainbar.membershipStatus']} " styleClass="GUITag"  />
+                                    <h:outputText id="level" value="#{loginBean.user.serviceLevel}" rendered="#{!loginBean.user.trainer}"/>
+                                    <h:outputLabel value="#{res['mainbar.trainer']}" styleClass="TrainerConsole" rendered="#{loginBean.user.trainer}"/>
+                                </td><td align="right">                                    
+                                    <h:commandLink action="main">
+                                        <h:outputText value="#{res['mainbar.mainLink']}"/>
+                                    </h:commandLink>  |                                     
+                                    <h:commandLink action="#{loginBean.logout()}"  immediate="true">
+                                        <h:outputText value="#{res['mainbar.logoutLink']}"/>
+                                    </h:commandLink>                                    
+                                </td></tr></table>
+                        <!--              <f:subview id="mainbar">
+                                        <jsp:include page="mainbar.jsp"/>
+                                      </f:subview>-->
+                    </td>
+                </tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr>
+                    <td>
+                        <h:panelGrid columns="6" cellpadding="5" cellspacing="5">
+                            <h:outputText value="#{res['main.header']}" styleClass="PageTitle"/> #
+                            <h:outputText value="#{trainingEventRegistryBean.allEvents.size()}"/> 
+                            <h:outputText value="Rows"/>
+                            <h:selectOneMenu value="#{trainingEventRegistryBean.page_row}"   onchange="submit()" >
+                                    <f:selectItem itemLabel="5" itemValue="5"/>
+                                    <f:selectItem itemLabel="10" itemValue="10"/>
+                                    <f:selectItem itemLabel="15" itemValue="15"/>
+                                    <f:selectItem itemLabel="50" itemValue="50"/>
+
+                                </h:selectOneMenu>
+                        </h:panelGrid>
+                        <h:dataTable id="eventsTable" rows="#{trainingEventRegistryBean.page_row}"  
+                                     value="#{trainingEventRegistryBean.allEvents}"
+                                     var="te" rowClasses="list-row-odd,list-row-even" 
+                                     headerClass="table-header"
+                                     width="100%"  >
+                            <h:column rendered="#{userBean.trainer}">
+                                <f:facet name="header">
+                                    <h:panelGroup>
+                                        <h:commandLink actionListener="#{Main_Backing.sortByUserId}"
+                                                       immediate="true">
+                                            <h:outputText value="#{res['main.userAccount']}"/>
+                                        </h:commandLink>
+                                        <h:graphicImage library="images" name="#{Main_Backing.sortUserIdAsc ? 'arrow-up.gif' : 'arrow-down.gif'}" height="13"
+                                                        width="9" rendered="#{Main_Backing.showSortUserIdIcon}"/>                                      
+                                    </h:panelGroup>
+                                </f:facet>
+                                <h:outputText value="#{te.userid}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:panelGroup>
+                                        <h:commandLink actionListener="#{Main_Backing.sortByEvent}"
+                                                       immediate="true">
+                                            <h:outputText value="#{res['main.eventName']}"/>
+                                        </h:commandLink>
+                                        <h:graphicImage library="images" name="#{Main_Backing.sortEventAsc ? 'arrow-up.gif' : 'arrow-down.gif'}" height="13"
+                                                        width="9" rendered="#{Main_Backing.showSortEventIcon}"/>
+                                    </h:panelGroup>
+                                </f:facet>                 
+                                <h:outputText value="#{te.ename}"/>                    
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:panelGroup>
+                                        <h:commandLink actionListener="#{Main_Backing.sortByDate}" immediate="true" >
+                                            <h:outputText value="#{res['main.completionDate']}"/>
+                                        </h:commandLink>
+                                        <h:graphicImage library="images" name="#{!Main_Backing.sortDateAsc ? 'arrow-up.gif' : 'arrow-down.gif'}" height="13"
+                                                        width="9" rendered="#{Main_Backing.showSortDateIcon}"/>
+
+                                    </h:panelGroup>
+                                </f:facet>                    
+                                <h:outputText value="#{te.completionDate}">
+                                    <f:convertDateTime pattern="MM-dd-yy"/>
+                                </h:outputText>
+                            </h:column>
+
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:panelGroup>
+                                        <h:commandLink actionListener="#{Main_Backing.sortBySkill}" immediate="true" >
+                                            <h:outputText value="#{res['main.skillLevel']}"/>
+                                        </h:commandLink>                        
+                                        <h:graphicImage library="images" name="#{Main_Backing.sortSkillAsc ? 'arrow-up.gif' : 'arrow-down.gif'}" height="13"
+                                                        width="9" rendered="#{Main_Backing.showSortSkillIcon}"/>                                      
+                                    </h:panelGroup>
+                                </f:facet>
+                                <h:outputText value="#{te.skill}"/>
+                            </h:column>
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:panelGroup>
+                                        <h:commandLink actionListener="#{Main_Backing.sortByStatus}" immediate="true" >                    
+                                            <h:outputText value="#{res['main.status']}"/>
+                                        </h:commandLink>
+                                        <h:graphicImage library="images" name="#{Main_Backing.sortStatusAsc ? 'arrow-up.gif' : 'arrow-down.gif'}" height="13"
+                                                        width="9" rendered="#{Main_Backing.showSortStatusIcon}"/>
+                                    </h:panelGroup>
+                                </f:facet>
+                                <h:outputText value="#{te.status}"/>
+                            </h:column>
+
+                            <h:column >
+                                <f:facet name="header">
+                                    <h:outputText value="Operation"/>
+                                </f:facet>
+                                <h:commandLink action="#{Main_Backing.editTrainingEventAction}">
+                                    <h:outputText value="#{res['main.select']}" />
+                                    <f:setPropertyActionListener value="#{te}" target="#{trainingEventRegistryBean.event}"/>
+                                </h:commandLink>
+                            </h:column>
+                         
+                        </h:dataTable>
+                        <p></p>
+                        <h:commandButton value="#{res['main.createButton']}" action="create?faces-redirect=true"  />
+                    </td>
+                </tr>
+            </table>
+
+        </h:form></body>
+</html>
+

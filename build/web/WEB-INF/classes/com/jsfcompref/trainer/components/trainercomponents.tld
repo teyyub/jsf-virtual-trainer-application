@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+ Copyright 2004 Sun Microsystems, Inc. All Rights Reserved.
+ 
+ Redistribution and use in source and binary forms, with or
+ without modification, are permitted provided that the following
+ conditions are met:
+ 
+ - Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ 
+ - Redistribution in binary form must reproduce the above
+   copyright notice, this list of conditions and the following
+   disclaimer in the documentation and/or other materials
+   provided with the distribution.
+    
+ Neither the name of Sun Microsystems, Inc. or the names of
+ contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+  
+ This software is provided "AS IS," without a warranty of any
+ kind. ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND
+ WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE HEREBY
+ EXCLUDED. SUN AND ITS LICENSORS SHALL NOT BE LIABLE FOR ANY
+ DAMAGES OR LIABILITIES SUFFERED BY LICENSEE AS A RESULT OF OR
+ RELATING TO USE, MODIFICATION OR DISTRIBUTION OF THIS SOFTWARE OR
+ ITS DERIVATIVES. IN NO EVENT WILL SUN OR ITS LICENSORS BE LIABLE
+ FOR ANY LOST REVENUE, PROFIT OR DATA, OR FOR DIRECT, INDIRECT,
+ SPECIAL, CONSEQUENTIAL, INCIDENTAL OR PUNITIVE DAMAGES, HOWEVER
+ CAUSED AND REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF
+ THE USE OF OR INABILITY TO USE THIS SOFTWARE, EVEN IF SUN HAS
+ BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+  
+ You acknowledge that this software is not designed, licensed or
+ intended for use in the design, construction, operation or
+ maintenance of any nuclear facility.
+-->
+
+<!DOCTYPE taglib
+  PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
+  "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+
+
+<taglib>
+
+  <tlib-version>0.03</tlib-version>
+  <jsp-version>1.2</jsp-version>
+  <short-name>Virtual Sports Trainer Example Components Tag Library</short-name>
+  <uri>http://virtualsportstrainer.com/trainercomponents</uri>
+  <description>
+    Based originally on Sun Microsystem's "Components Demo" this tag library is for the custom 
+    components used in the Virtual Sports Trainer Example Demo.
+  </description>
+
+
+  <tag>
+
+    <name>scroller</name>
+    <tag-class>com.jsfcompref.trainer.components.ScrollerTag</tag-class>
+    <body-content>JSP</body-content>
+    <description>
+    Renders a set of hyperlinks to enable navigation over results that span
+    across several pages.  Child tags nested inside this tag must be:
+    * facet tags that can optionally nest panel_group tag that provide widgets
+    * for easy navigation.
+    </description>
+
+    <attribute>
+      <name>binding</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        Value binding expression to bind this component to a backing bean.
+      </description>
+    </attribute>
+
+    <attribute>
+      <name>id</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        Component id of this component.
+      </description>
+    </attribute>
+    
+    <attribute>
+      <name>for</name>
+      <required>true</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+         The data grid component for which this acts as a scroller.
+      </description>
+    </attribute>
+
+    <attribute>
+      <name>navFacetOrientation</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+        When rendering a widget representing "page navigation" where
+        should the facet markup be rendered in relation to the page
+        navigation widget?  Values are "NORTH", "SOUTH", "EAST", "WEST".
+        Case insensitive.
+      </description>
+    </attribute>
+    
+    <attribute>
+      <name>actionListener</name>
+      <required>false</required>
+      <rtexprvalue>false</rtexprvalue>
+      <description>
+         Optional method binding reference to handle scroll event.
+      </description>
+    </attribute>
+</tag>
+
+</taglib>
