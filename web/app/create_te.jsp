@@ -84,9 +84,9 @@
                 <f:verbatim>&nbsp;</f:verbatim>
 
                 <f:verbatim>&nbsp;</f:verbatim>
-                <h:commandButton value="#{res[\'create.createButton\']}"
+                <h:commandButton value="#{res['create.createButton']}"
                                  action="#{CreateTe_Backing.CreateTEAction}"/>
-                <h:commandButton value="#{res[\'create.cancelButton\']}" action="main" immediate="true" />
+                <h:commandButton value="#{res['create.cancelButton']}" action="main" immediate="true" />
 
               </h:panelGrid>
 

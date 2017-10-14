@@ -3,8 +3,6 @@ package com.project.model;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
 
 
 /**
