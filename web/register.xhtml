@@ -12,7 +12,7 @@
         <link rel="shortcut icon" href="images/favicon.ico"/>
     </h:head>
 
-    <h:body>
+    <h:body >
         <h:form>
             <table width="100%" border="0">
                 <tr>
@@ -52,39 +52,39 @@
                             <h:outputText value="#{res['register.header']}" styleClass="PageTitle"/></p>
 
                         <h:messages globalOnly="true" layout="table" infoClass="RegError"/>              
-                        <b:panel> 
+                        <b:container  > 
                             <b:panelGrid   colSpans="2,10"  size="xs">
 
                                 <h:outputLabel value="#{res['register.firstName']}" for="fname" />                
                                 <b:inputText span="10" required="true" id="fname" requiredMessage="Enter First Name"
                                              value="#{loginBean.user.firstName}"/>
-                                 
+
 
                                 <h:outputLabel value="#{res['register.lastName']}" for="lname" />                
                                 <b:inputText span="10" required="true" id="lname" requiredMessage="Enter Last Name"
                                              value="#{loginBean.user.lastName}"/>
-                                
+
 
                                 <h:outputLabel value="#{res['register.gender']}" for="gender" />                
                                 <h:selectOneRadio  required="true" id="gender"  requiredMessage="Enter gender"
-                                                  value="#{loginBean.user.gender}" >
+                                                   value="#{loginBean.user.gender}" >
                                     <f:selectItem itemLabel="#{res['register.male']}" itemValue="male"/>
                                     <f:selectItem itemLabel="#{res['register.female']}" itemValue="female"/>
                                 </h:selectOneRadio>
-                                
+
 
                                 <h:outputLabel value="#{res['register.dob']}" for="dob"/>                
                                 <b:dateTimePicker span="10"/>                                                      
 
-                               
-                                 
+
+
 
                                 <h:outputLabel value="#{res['register.email']}" for="email"/>                
                                 <b:inputText span="10" required="true" id="email"
                                              requiredMessage="Enter Emil"
                                              value="#{loginBean.user.email}"
                                              validator="#{loginBean.validateEmail}"/>
-                               
+
 
                                 <h:outputLabel value="#{res['register.serviceLevel']}" for="level"/> 
                                 <b:selectOneMenu  span="10" value="#{loginBean.user.serviceLevel}" id="level" >
@@ -92,7 +92,7 @@
                                     <f:selectItem itemLabel="#{res['register.medium']}" itemValue="Medium"/>
                                     <f:selectItem itemLabel="#{res['register.premium']}" itemValue="Premium"/>
                                 </b:selectOneMenu>
-                               
+
 
                                 <h:outputLabel value="#{res['register.userid']}" for="userid"/>                
                                 <b:inputText span="10" required="true" id="userid" requiredMessage="Enter User Id"
@@ -101,23 +101,22 @@
                                 <h:outputLabel value="#{res['register.password']}" for="password"/>                
                                 <b:inputSecret span="10" required="true" id="password" requiredMessage="Enter Password"
                                                value="#{loginBean.user.userPassword}" />
-                               
+
 
                                 <h:outputLabel value="#{res['register.passwordReType']}" for="password2"/>                
                                 <b:inputSecret span="10" required="true" id="password2" requiredMessage="Enter Password Again"
                                                value="#{loginBean.user.userPassword}"
                                                validator="#{registerBean.validatePassword}"/>
-                      
-                                <b:panelGrid   colSpans="6,6"  size="xs" >
+                                <b:panelGrid colSpans="6,6">
                                     <b:commandButton value="#{res['register.registerButton']}"
                                                      action="#{loginBean.registerUser()}"  look="primary"/>
-                                    
+
                                     <b:commandButton value="#{res['register.cancelButton']}" action="index.xhtml?faces-redirect=true"
                                                      immediate="true" />
-                                 </b:panelGrid> 
+                                </b:panelGrid>
+                            </b:panelGrid> 
 
-                            </b:panelGrid>
-                        </b:panel>    
+                        </b:container>    
                     </td>
                 </tr>
             </table>
