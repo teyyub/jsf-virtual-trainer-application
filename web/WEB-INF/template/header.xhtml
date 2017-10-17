@@ -29,13 +29,22 @@
                             <td align="right">
                                 <table width="100%" class="BarBkgnd">
                                     <tr>
+                                        <td align="left"> 
+                                            <h:outputLabel value="#{res['mainbar.welcome']} " styleClass="GUITag" />
+                                            <h:outputText id="userid"  value="#{loginBean.user.userId}" />                
+                                        </td>
+                                        <td align="left">                                    
+                                            <h:outputLabel value="#{res['mainbar.membershipStatus']} " styleClass="GUITag"  />
+                                            <h:outputText id="level" value="#{loginBean.user.serviceLevel}" rendered="#{!loginBean.user.trainer}"/>
+                                            <h:outputLabel value="#{res['mainbar.trainer']}" styleClass="TrainerConsole" rendered="#{loginBean.user.trainer}"/>
+                                        </td>  
                                         <td align="right">   
 
-                                            <h:commandLink action="register?faces-redirect=true" immediate="true">
-                                                <h:outputText value="Register"/>
-                                            </h:commandLink> |                                         
-                                            <h:commandLink action="login.xhtml?faces-redirect=true" immediate="true">
-                                                <h:outputText value="Login"/>
+                                            <!--<h:outputLabel value="{res['mainbar.welcome']}"/>-->
+                                            <!--<h:outputText id="userid"  value="{loginBean.user.userId}" />--> 
+
+                                            <h:commandLink action="#{loginBean.logout()}" immediate="true">
+                                                <h:outputText value="Logout"/>
                                             </h:commandLink>                                         
                                         </td>
                                     </tr>
