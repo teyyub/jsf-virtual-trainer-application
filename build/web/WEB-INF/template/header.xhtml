@@ -1,0 +1,51 @@
+ 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></meta>
+        <title>
+            <h:outputText value="#{res.title} - #{res['main.pageTitle']}"/>
+        </title>
+        <h:outputStylesheet library="css" name="vt.css" />
+        <link rel="shortcut icon" href="../images/favicon.ico"/>
+    </h:head>
+    <h:body> 
+        <ui:composition>
+            <b:container>
+                <b:form> 
+                    <table width="100%" border="0">
+                        <tr> 
+                            <td height="89"> 
+                                <h1 align="center"><h:graphicImage library="images" name="vtlogo.jpg" />
+                                    <h:outputText value="#{res.title}"/>
+                                </h1>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="right">
+                                <table width="100%" class="BarBkgnd">
+                                    <tr>
+                                        <td align="right">   
+
+                                            <h:commandLink action="register?faces-redirect=true" immediate="true">
+                                                <h:outputText value="Register"/>
+                                            </h:commandLink> |                                         
+                                            <h:commandLink action="login.xhtml?faces-redirect=true" immediate="true">
+                                                <h:outputText value="Login"/>
+                                            </h:commandLink>                                         
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>  
+                </b:form>
+            </b:container> 
+        </ui:composition>
+    </h:body>
+</html>
+
