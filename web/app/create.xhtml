@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
     <!--      xmlns:t="http://virtualsportstrainer.com/trainercomponents" >-->
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></meta>
@@ -46,11 +47,9 @@
                                     <h:commandLink action="#{loginBean.logout()}"  immediate="true">
                                         <h:outputText value="#{res['mainbar.logoutLink']}"/>
                                     </h:commandLink>
-                                    <!--<f:verbatim>-->
+                                    
                                 </td></tr></table>
-                        <!--                        <f:subview id="mainbar">
-                                                    <ui:include src="mainbar.jsp"/>
-                                                </f:subview>-->
+ 
                     </td>
                 </tr>
                 <tr>
@@ -61,13 +60,12 @@
                         <h:panelGrid width="70%" columns="3" border="0">
 
                             <h:outputLabel value="#{res['create.eventName']}" for="ename" />
-                            <h:inputText  required="true" requiredMessage="Enter event name"
-                                          id="ename" value="#{createBean.ename}"
-                                          size="30"/>
+                            <b:inputText  required="true" requiredMessage="Enter event name"
+                                          id="ename" value="#{createBean.ename}"/>
                             <h:message for="ename" errorClass="ValidateError"/>
 
                             <h:outputLabel value="#{res['create.eventType']}" for="etype" />
-                            <h:selectOneMenu  value="#{createBean.etype}" id="etype">
+                            <b:selectOneMenu  value="#{createBean.etype}" id="etype">
                                 <f:selectItem itemLabel="#{res['create.type.fivek']}" itemValue="5k"/>
                                 <f:selectItem itemLabel="#{res['create.type.tenk']}" itemValue="10k"/>
                                 <f:selectItem itemLabel="#{res['create.type.halfMarathon']}"
@@ -76,19 +74,19 @@
                                               itemValue="Full Marathon"/>
                                 <f:selectItem itemLabel="#{res['create.type.triathlon']}" itemValue="Triathlon"/>
                                 <f:selectItem itemLabel="#{res['create.type.workout']}" itemValue="Weekly Workout"/>
-                            </h:selectOneMenu>
+                            </b:selectOneMenu>
                             <f:verbatim> </f:verbatim>
 
                             <h:outputLabel value="#{res['create.eventDate']}" for="doe"/>
-                            <h:inputText value="#{createBean.doe}" id="doe"
+                            <b:dateTimePicker  value="#{createBean.doe}" id="doe"
                                          required="true" requiredMessage="Enter event date" >
                                 <f:convertDateTime pattern="MM-dd-yy"/>
                                 <!--<f:validator validatorId="futureDateValidate"/>-->
-                            </h:inputText>
+                            </b:dateTimePicker>
                             <h:message for="doe" errorClass="ValidateError"/>
 
                             <h:outputLabel value="#{res['create.skill']}" for="skill"/>
-                            <h:selectOneMenu  value="#{createBean.skill}" id="skill">
+                            <b:selectOneMenu  value="#{createBean.skill}" id="skill">
                                 <f:selectItem itemLabel="#{res['create.skill.casual']}" itemValue="Casual"/>
                                 <f:selectItem itemLabel="#{res['create.skill.basic']}"
                                               itemValue="Basic Competitive"/>
@@ -96,22 +94,21 @@
                                               itemValue="Medium Competitive"/>
                                 <f:selectItem itemLabel="#{res['create.skill.advanced']}"
                                               itemValue="Advanced Competitive - Olympic"/>
-                            </h:selectOneMenu>
-                            <f:verbatim></f:verbatim>
+                            </b:selectOneMenu>
+                            
 
                             <h:outputLabel value="#{res['create.trainer']}" for="trainer"/>
-                            <h:selectOneMenu  value="#{createBean.trainer}"
+                            <b:selectOneMenu  value="#{createBean.trainer}"
                                               id="trainer">
                                 <f:selectItems var="tl" itemLabel="#{tl.firstName}" value="#{createBean.trainers}"/>
-                            </h:selectOneMenu>
-                            <f:verbatim></f:verbatim>
-
-                            <f:verbatim></f:verbatim>
+                            </b:selectOneMenu>
+                            
+ 
                             <f:facet name="footer">
                                 <h:panelGrid columns="2">
-                                    <h:commandButton value="#{res['create.createButton']}"
-                                                     action="#{createBean.CreateTEAction}"/>
-                                    <h:commandButton value="#{res['create.cancelButton']}" action="main" immediate="true" />
+                                    <b:commandButton value="#{res['create.createButton']}"
+                                                     action="#{createBean.CreateTEAction}" look="primary"/>
+                                    <b:commandButton value="#{res['create.cancelButton']}" look="default" action="main" immediate="true" />
                                 </h:panelGrid>
 
                             </f:facet>

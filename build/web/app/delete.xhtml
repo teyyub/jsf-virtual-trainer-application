@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
     <!--      xmlns:t="http://virtualsportstrainer.com/trainercomponents" >-->
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></meta>
@@ -58,9 +59,9 @@
 
 
                             <h:panelGrid columns="2" width="35%" cellpadding="12">
-                                <h:commandButton value="#{res['delete.deleteButton']}"
+                                <b:commandButton value="#{res['delete.deleteButton']}" look="danger"
                                                  action="#{trainingEventRegistryBean.deleteTrainingEvent()}"/>
-                                <h:commandButton value="#{res['delete.cancelButton']}"
+                                <b:commandButton value="#{res['delete.cancelButton']}" 
                                                  action="main?faces-redirect=true" immediate="true"/>
                             </h:panelGrid>                   
 

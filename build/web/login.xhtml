@@ -7,75 +7,45 @@
     <h:head>
         <h:outputStylesheet library="css" name="vt.css"/>
     </h:head>
-    <h:body>
-        <h:form>
-            <table width="100%" border="0">
-                <tr>
-                    <td>
-                        <h1 align="center">
-                            <h:graphicImage library="images" name="vtlogo.jpg"
-                                            alt="Virtual Trainer Logo"/>
-                            <h:outputText value="#{res.title}"/>
-                        </h1>
-                    </td>
-                </tr>          
-                <tr>
-                    <td> 
-                        <table width="100%" class="BarBkgnd"><tr><td align="right">                                
-                                    <h:commandLink action="register" immediate="true">
-                                        <h:outputText value="register"/>
-                                    </h:commandLink> |                                    
-                                    <h:commandLink action="login.xhtml" immediate="true">
-                                        <h:outputText value="Login"/>
-                                    </h:commandLink>
+    <h:body id="loginBody" style="padding-top: 100px;">
 
-                                </td></tr>
-                        </table>
-                        <!--                        <f:subview id="loginbar">
-                                                    <ui:include src="loginbar.jsp"/>
-                                                </f:subview>-->
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p>
-                            <h:outputText value="#{res['login.header']}" styleClass="PageTitle"/></p>
-                        <h:messages globalOnly="true" infoClass="LoginError"/>          
-                        
-                            <b:inputText placeholder="Username" required="true" label="Username" colMd="10" labelColMd="2"
-                                        value="#{loginBean.user.userId}"  
-                                         >
-                                <f:facet name="prepend">
-                                    <b:icon name="user" />
-                                </f:facet>
-                            </b:inputText>
-                            <b:inputText placeholder="Password" label="Password" colMd="10" labelColMd="2"
-                                         value="#{loginBean.user.userPassword}">
-                                <f:facet name="prepend">
-                                    <b:iconAwesome name="key" />
-                                </f:facet>
-                            </b:inputText>
-                        
-                        <h:panelGrid width="70%" columns="3" border="0" styleClass="form-bkg">
-                            <h:outputLabel value="#{res['login.userid']}" for="userid"/>                
-                            <h:inputText required="true" id="userid" requiredMessage="Enter userid"
-                                         value="#{loginBean.user.userId}"/>
-                            <h:message for="userid" errorClass="ValidateError"/>
-                            <h:outputLabel value="#{res['login.password']}" for="password"/>                
-                            <h:inputSecret required="true" id="password" requiredMessage="Enter password"
-                                           value="#{loginBean.user.userPassword}"/>
-                            <h:message for="password" errorClass="ValidateError"/>
-                            <f:verbatim></f:verbatim>
-                            <h:panelGroup>
-                                <b:commandButton value="#{res['login.login']}"
-                                                 action="#{loginBean.login()}" look="primary" /> |                                                                   
-                                <b:commandButton value="#{res['login.cancel']}" immediate="true"
-                                                 action="index?faces-redirect=true"/>
-                            </h:panelGroup>                            
-                        </h:panelGrid>
-                    </td>
-                </tr>
-            </table>
-        </h:form>
+
+        <b:container  >
+            
+            <h:form id="loginForm"  style="width: 50%; margin-left: auto;margin-right: auto; margin-top: 100px; " >
+                <!--                <b:panel style="width: 50%; margin-left: auto;margin-right: auto; margin-top: 100px; "> -->
+                <h:outputText value="#{res['login.header']}" />
+                <h:messages globalOnly="true" /> 
+                
+                <b:inputText placeholder="Username" required="true" label="Username"  
+                             value="#{loginBean.user.userId}"  >
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                </b:inputText>
+                <!--<b:message for="@previous" />-->
+
+                <b:inputText placeholder="Password" required="true" label="Password"  
+                             value="#{loginBean.user.userPassword}">
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputText>
+                <!--<b:message for="@previous" />-->
+
+
+                <b:commandButton value="#{res['login.login']}"
+                                 action="#{loginBean.login()}" look="primary" icon="log-in"/> |                                                                   
+                <b:commandButton value="#{res['login.cancel']}" immediate="true"
+                                 action="index?faces-redirect=true"/>
+
+
+
+                <!--</b:panel>-->  
+            </h:form>
+        </b:container>  
+
+
+
     </h:body>
 </html>
